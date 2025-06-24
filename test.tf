@@ -23,10 +23,10 @@ resource "coder_volume" "dev" {
     workspace = {
       access_port       = 8080
       access_url        = "https://dev.coder.example.com/myws1"
-      id                = "myws3"
+      id                = "myws4"
       is_prebuild       = false
       is_prebuild_claim = false
-      name              = "myws3"
+      name              = "myws4"
       owner = {
         email             = "alice@example.com"
         full_name         = "Alice Example"
@@ -71,10 +71,10 @@ resource "coder_instance" "dev" {
     workspace = {
       access_port       = 8080
       access_url        = "https://dev.coder.example.com/myws1"
-      id                = "myws3"
+      id                = "myws4"
       is_prebuild       = false
       is_prebuild_claim = false
-      name              = "myws3"
+      name              = "myws4"
       owner = {
         email             = "alice@example.com"
         full_name         = "Alice Example"
@@ -101,11 +101,11 @@ resource "coder_instance" "dev" {
   })
 }
 
-# output "volume" {
-#   value = jsonencode(coder_volume.dev.result[0])
-# }
+output "volume" {
+  value = jsonencode(coder_volume.dev.id)
+}
 
-# output "instance" {
-#   value = jsonencode(coder_instance.dev[0].result[0])
-# }
+output "instance" {
+  value = jsonencode(coder_instance.dev[0].id)
+}
 

@@ -31,8 +31,8 @@ func Provider() *schema.Provider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"coder_volume": volume.Resource(),
-			"coder_instance": instance.Resource(),
+			"remote_volume": volume.Resource(),
+			"remote_instance": instance.Resource(),
 		},
 		ConfigureContextFunc: configureProvider,
 	}
