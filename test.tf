@@ -18,16 +18,16 @@ resource "coder_volume" "dev" {
   subnet_id = "subnet-083224448dace4c25"
   name      = "home"
   type      = "gp3"
-  size      = 50
-  coder {
-    workspace {
+  size      = 60
+  coder     = jsonencode({
+    workspace = {
       access_port       = 8080
       access_url        = "https://dev.coder.example.com/myws1"
-      id                = "myws2"
+      id                = "myws3"
       is_prebuild       = false
       is_prebuild_claim = false
-      name              = "myws2"
-      owner {
+      name              = "myws3"
+      owner = {
         email             = "alice@example.com"
         full_name         = "Alice Example"
         groups            = ["developers"]
@@ -35,10 +35,10 @@ resource "coder_volume" "dev" {
         login_type        = "password"
         name              = "alice"
         oidc_access_token = ""
-        rbac_roles {
+        rbac_roles = [{
           name   = "developer"
           org_id = "org-001"
-        }
+        }]
         session_token   = "SESSION_TOKEN_SAMPLE"
         ssh_private_key = "PRIVATE_KEY_SAMPLE"
         ssh_public_key  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7..."
@@ -50,7 +50,7 @@ resource "coder_volume" "dev" {
       template_version = "1.0.0"
       transition       = "start"
     }
-  }
+  })
 }
 
 resource "coder_instance" "dev" {
@@ -67,15 +67,15 @@ resource "coder_instance" "dev" {
   root_volume_size   = 20
   home_volume_id     = coder_volume.dev.id
   tags = { }
-  coder {
-    workspace {
+  coder = jsonencode({
+    workspace = {
       access_port       = 8080
       access_url        = "https://dev.coder.example.com/myws1"
-      id                = "myws2"
+      id                = "myws3"
       is_prebuild       = false
       is_prebuild_claim = false
-      name              = "myws2"
-      owner {
+      name              = "myws3"
+      owner = {
         email             = "alice@example.com"
         full_name         = "Alice Example"
         groups            = ["developers"]
@@ -83,10 +83,10 @@ resource "coder_instance" "dev" {
         login_type        = "password"
         name              = "alice"
         oidc_access_token = ""
-        rbac_roles {
+        rbac_roles = [{
           name   = "developer"
           org_id = "org-001"
-        }
+        }]
         session_token   = "SESSION_TOKEN_SAMPLE"
         ssh_private_key = "PRIVATE_KEY_SAMPLE"
         ssh_public_key  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7..."
@@ -98,14 +98,14 @@ resource "coder_instance" "dev" {
       template_version = "1.0.0"
       transition       = "start"
     }
-  }
+  })
 }
 
-output "volume" {
-  value = jsonencode(coder_volume.dev.result[0])
-}
+# output "volume" {
+#   value = jsonencode(coder_volume.dev.result[0])
+# }
 
-output "instance" {
-  value = jsonencode(coder_instance.dev[0].result[0])
-}
+# output "instance" {
+#   value = jsonencode(coder_instance.dev[0].result[0])
+# }
 
