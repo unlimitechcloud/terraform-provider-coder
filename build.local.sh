@@ -1,1 +1,1 @@
-go build -o terraform-provider-remote_v0.0.0
+go build -o terraform-provider-coder_v0.0.0

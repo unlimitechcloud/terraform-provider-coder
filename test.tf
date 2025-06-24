@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     remote = {
-      source  = "unlimitechcloud/remote"
+      source  = "unlimitechcloud/coder"
       version = "0.0.0"
     }
   }
