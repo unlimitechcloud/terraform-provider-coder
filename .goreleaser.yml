@@ -1,6 +1,6 @@
 version: 2
 
-project_name: terraform-provider-remote
+project_name: terraform-provider-coder
 
 before:
   hooks:
@@ -60,4 +60,4 @@ signs:
 release:
   github:
     owner: unlimitechcloud
-    name: terraform-provider-remote
+    name: terraform-provider-coder
