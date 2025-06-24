@@ -6,6 +6,11 @@ import (
 
 func InputSchema() map[string]*schema.Schema {
 	return map[string]*schema.Schema{
+		"now": {
+			Type:        schema.TypeString,
+			Required:    true,
+			Description: "Utility field to force replace",
+		},
 		"require_on_demand": {
 			Type:        schema.TypeBool,
 			Required:    true,
