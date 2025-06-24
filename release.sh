@@ -18,7 +18,7 @@ fi
 
 git add .
 git commit -m "chore: release $new_tag"
-git push origin main
+git push origin master
 
 echo "$new_tag"
 git tag "$new_tag"
